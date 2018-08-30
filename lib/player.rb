@@ -1,5 +1,4 @@
 require_relative 'fighter'
 
-class Enemy < Fighter
-
+class Player < Fighter
 end
