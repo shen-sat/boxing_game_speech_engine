@@ -29,4 +29,8 @@ class RosterBuilder
 		return roster
 	
 	end
+
+	def add_player(roster, player)
+		return roster << player
+	end
 end
