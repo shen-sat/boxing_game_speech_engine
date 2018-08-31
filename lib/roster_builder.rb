@@ -10,7 +10,7 @@ class RosterBuilder
 		@age_range = age_range
 	end
 
-	def build(number_of_enemies)
+	def build(number_of_enemies, player)
 		roster = []
 		number_of_enemies.times do
 			name = names.delete_at(rand(names.length))
@@ -26,6 +26,7 @@ class RosterBuilder
 									.build
 			roster << enemy
 		end
+		roster << player
 		return roster
 	
 	end
