@@ -19,7 +19,6 @@ describe 'roster builder class' do
 
 	context 'when given input 3 and a player' do
 		let	(:roster)	{ roster_builder.build(3, player) }
-		
 		it 'should build a roster of 4 fighters' do
 			expect(roster.size).to eq(4)
 		end
@@ -34,6 +33,23 @@ describe 'roster builder class' do
 		it 'should add the player to the end of the roster' do
 			expect(roster.last.is_a?(Player)).to eq(true)	
 		end
+
+		it 'should not have an enemy repeated in the roster' do
+			duplicates_check = roster.detect {|fighter| roster.count(fighter) > 1 }
+			expect(duplicates_check).to eq(nil)
+		end
+
 	end
+
+	context 'when initialised with duplicate names' do
+		enemy_builder = EnemyBuilder.new
+		conor = enemy_builder.set_name("Conor").set_lastname("McGregor").build
+		conor_duplicate = enemy_builder.set_name("Conor").set_lastname("McGregor").build
+		frankie = enemy_builder.set_name("Frankie").set_lastname("Edgar").build
+		enemy_array = [conor, frankie]
+		it 'should detect enemies with the same first and last names' do
+			expect(roster_builder.duplicate_names?(enemy_array, conor_duplicate)).to eq(true)
+		end
+	end 
 
 end
