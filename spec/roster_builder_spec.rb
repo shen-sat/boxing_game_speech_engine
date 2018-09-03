@@ -41,15 +41,15 @@ describe 'roster builder class' do
 
 	end
 
-	context 'when initialised with duplicate names' do
-		enemy_builder = EnemyBuilder.new
-		conor = enemy_builder.set_name("Conor").set_lastname("McGregor").build
-		conor_duplicate = enemy_builder.set_name("Conor").set_lastname("McGregor").build
-		frankie = enemy_builder.set_name("Frankie").set_lastname("Edgar").build
-		enemy_array = [conor, frankie]
-		it 'should detect enemies with the same first and last names' do
-			expect(roster_builder.duplicate_names?(enemy_array, conor_duplicate)).to eq(true)
-		end
-	end 
+	# context 'when initialised with duplicate names' do
+	# 	enemy_builder = EnemyBuilder.new
+	# 	conor = enemy_builder.set_name("Conor").set_lastname("McGregor").build
+	# 	conor_duplicate = enemy_builder.set_name("Conor").set_lastname("McGregor").build
+	# 	frankie = enemy_builder.set_name("Frankie").set_lastname("Edgar").build
+	# 	enemy_array = [conor, frankie]
+	# 	it 'should detect enemies with the same first and last names' do
+	# 		expect(roster_builder.duplicate_names?(enemy_array, conor_duplicate)).to eq(true)
+	# 	end
+	# end 
 
 end

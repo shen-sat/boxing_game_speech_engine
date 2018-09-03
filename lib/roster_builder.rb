@@ -24,7 +24,8 @@ class RosterBuilder
 									.set_rank(rank)
 									.set_nickname(nickname)
 									.build
-			redo if duplicate_names?(roster, enemy)
+			# redo the loop if a character has the same first and second names 
+			# redo if duplicate_names?(roster, enemy)
 			roster << enemy
 		end
 		roster << player
@@ -36,12 +37,12 @@ class RosterBuilder
 		return roster << player
 	end
 
-	def duplicate_names?(roster, new_enemy)
-		duplicate_found = false
-		roster.each do |enemy|
-			duplicate_found = true if (enemy.name == new_enemy.name && enemy.lastname == new_enemy.lastname)
-		end
-		return duplicate_found
-	end
+	# def duplicate_names?(roster, new_enemy)
+	# 	duplicate_found = false
+	# 	roster.each do |enemy|
+	# 		duplicate_found = true if (enemy.name == new_enemy.name && enemy.lastname == new_enemy.lastname)
+	# 	end
+	# 	return duplicate_found
+	# end
 
 end
