@@ -43,6 +43,17 @@ describe 'pair matrix builder class' do
 				expect(pair.to_a[0] != pair.to_a[1]).to eq(true) 
 			end
 		end
+
+		it 'should create a pair for each fighter with each other fighter' do 
+			roster.each do |fighter|
+				roster_minus_fighter = roster
+				roster_minus_fighter = roster - [fighter]
+				puts roster_minus_fighter
+				roster_minus_fighter.each do |f|
+					expect(pair_matrix).to include([f,fighter].to_set)
+				end
+			end
+		end
 	end
 	
 end
