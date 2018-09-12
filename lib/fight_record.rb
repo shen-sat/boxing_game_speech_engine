@@ -1,2 +1,0 @@
-class FightRecord
-end

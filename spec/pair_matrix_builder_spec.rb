@@ -52,6 +52,11 @@ describe 'pair matrix builder class' do
 				end
 			end
 		end
+
+		it 'should not care about the order of fighters when calling pairs' do
+			expect(pair_matrix.include?([conor, frankie].to_set)).to eq(true)
+			expect(pair_matrix.include?([frankie, conor].to_set)).to eq(true)
+		end
 	end
 	
 end
