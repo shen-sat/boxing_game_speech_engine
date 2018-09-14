@@ -31,9 +31,9 @@ describe 'Fight Record Builder class' do
 		expect(fight_record[[conor, player].to_set].has_key?(:last_fight_winner)).to eq(true)
 		expect(fight_record[[conor, player].to_set].has_key?(:last_fight_win_method)).to eq(true)
 		expect(fight_record[[conor, player].to_set].has_key?(:last_fight_no_of_rounds)).to eq(true)
-		expect(fight_record[[conor, player].to_set].has_key?(:conor)).to eq(true)
-		expect(fight_record[[conor, player].to_set].has_key?(:player)).to eq(true)
-		expect(fight_record[[conor, player].to_set][:conor].has_key?(:no_of_wins)).to eq(true)
-		expect(fight_record[[conor, player].to_set][:player].has_key?(:no_of_wins)).to eq(true)
+		expect(fight_record[[conor, player].to_set].has_key?(conor)).to eq(true)
+		expect(fight_record[[conor, player].to_set].has_key?(player)).to eq(true)
+		expect(fight_record[[conor, player].to_set][conor].has_key?(:no_of_wins)).to eq(true)
+		expect(fight_record[[conor, player].to_set][player].has_key?(:no_of_wins)).to eq(true)
 	end
 end
