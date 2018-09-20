@@ -36,4 +36,5 @@ describe 'Fight Record Builder class' do
 		expect(fight_record[[conor, player].to_set][conor].has_key?(:no_of_wins)).to eq(true)
 		expect(fight_record[[conor, player].to_set][player].has_key?(:no_of_wins)).to eq(true)
 	end
+
 end
