@@ -18,5 +18,16 @@ class Reader
 		puts "\n"
 	end
 
+	def see_fight_record(fight_record)
+		puts "\n"
+		rows = []
+		fight_record.each do |key, value|
+			rows << ["#{key.to_a[0].name} and #{key.to_a[1].name}"]
+		end
+		table = Terminal::Table.new :rows => rows
+		puts table
+		puts "\n"
+	end
+
 
 end
