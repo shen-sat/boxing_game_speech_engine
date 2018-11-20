@@ -1,15 +1,15 @@
 class QueryBuilder
 
-	def initialize(fighter, enemy, fight_record)
+	def initialize(fighter, opponent, fight_record)
 		@fighter = fighter
-		@enemy = enemy
+		@opponent = opponent
 		@fight_record = fight_record 
 	end
 
 	def build
 		query = {}
 		query[:fighter] = @fighter
-		query[:enemy] = @enemy
+		query[:opponent] = @opponent
 		query[:fight_record] = @fight_record
 		return query
 	end
