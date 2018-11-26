@@ -30,10 +30,9 @@ describe 'Query Builder class' do
 		query = QueryBuilder.new(fighter, enemy, fight_record).build
 		expect(query[:fighter].name).to eq("Conor")
 		expect(query[:opponent].age).to eq(29)
-		expect(query.has_key?(:fight_record)).to eq(true)
-		expect(query[:fight_record].has_key?(pair)).to eq(true)
-		expect(query[:fight_record][pair].has_key?(:last_fight_winner)).to eq(true)
-		expect(query[:fight_record][pair][:last_fight_winner]).to eq(enemy)
+		expect(query.has_key?(:history)).to eq(true)
+		expect(query[:history].has_key?(:last_fight_winner)).to eq(true)
+		expect(query[:history][:last_fight_winner]).to eq(enemy)
 	end
 
 end
