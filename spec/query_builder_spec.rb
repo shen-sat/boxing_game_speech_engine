@@ -19,10 +19,17 @@ describe 'Query Builder class' do
 								.set_rank(1)
 								.set_age(29)
 								.build
+	extra = EnemyBuilder.new	.set_name("Eddie")
+								.set_lastname("Alvarez")
+								.set_nickname("Not sure")
+								.set_rank(2)
+								.set_age(25)
+								.build
 
-	pair = [fighter, enemy].to_set
-	pair_matrix = [pair]
+	roster = [fighter, enemy, extra]
+	pair_matrix = PairMatrixBuilder.new(roster).build
 	fight_record = FightRecordBuilder.new(pair_matrix).build
+	pair = [enemy, fighter].to_set
 	fight_record[pair][:last_fight_winner] = enemy
 
 
