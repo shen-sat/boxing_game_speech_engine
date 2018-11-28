@@ -8,12 +8,13 @@ class TrashTalkProcessor
 	def process(checks)
 		responses = []
 		rules.each do |key, value|
-			puts eval "checks.#{key}"
-			if (eval "checks.#{key}") == true
-				responses << value
+			if (eval "checks.#{key[0]}") == true
+				responses << value[0]
+			else
+				responses << value[1]
 			end
 		end
-		return responses[0][0]
+		return responses[0].sample	
 	end
 
 end

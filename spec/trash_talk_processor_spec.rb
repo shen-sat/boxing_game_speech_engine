@@ -12,20 +12,29 @@ describe 'trash talk processor class' do
 	# 			} }
 	
 	let(:checks)	{ double("checks") }
-	rules = { "opponent_won_last" => ["You got lucky last time", 1]
+	rules = { ["opponent_won_last", 1] => 	[	[	"You got lucky last time", 
+													"This won't be a repeat of the last fight"
+												], 
+												[	"I'll beat you again",
+													"I'll beat you faster than the last fight"
+												]
+											]
+			  # "!opponent_won_last" => ["I'll beat you again", 1]
 			  # "fighter_is_champ" => ["This belt belongs to me", 1]
 	 		} 
 
-	it 'should return the most relevant line aimed at the champion' do
+	it 'should correctly respond to the opponent winning the last match' do
 		allow(checks).to receive(:opponent_won_last)	{true}
+		allow(rules[["opponent_won_last", 1]][0]).to receive(:sample) {"This won't be a repeat of the last fight"}
 		trash_talk_processor = TrashTalkProcessor.new(rules)
-		expect(trash_talk_processor.process(checks)).to eq("You got lucky last time")
+		expect(trash_talk_processor.process(checks)).to eq("This won't be a repeat of the last fight")
 	end
 
-	# it 'should return the most relevant line aimed at a contender' do
-	# 	allow(checks).to receive(:fighter_is_champ)	{true}
-	# 	trash_talk_processor = TrashTalkProcessor.new(rules)
-	# 	expect(trash_talk_processor.process(checks)).to eq("This belt belongs to me")
-	# end
+	it 'should correctly respond to the opponent losing the last match' do
+		allow(checks).to receive(:opponent_won_last)	{false}
+		allow(rules[["opponent_won_last", 1]][1]).to receive(:sample) {"I'll beat you again"}
+		trash_talk_processor = TrashTalkProcessor.new(rules)
+		expect(trash_talk_processor.process(checks)).to eq("I'll beat you again")
+	end
 	
 end
