@@ -9,9 +9,9 @@ class TrashTalkProcessor
 		responses = []
 		rules.each do |key, value|
 			if (eval "checks.#{key[0]}") == true
-				responses << value[0]
+				responses << rules[key][true]
 			else
-				responses << value[1]
+				responses << rules[key][false]
 			end
 		end
 		return responses[0].sample	
