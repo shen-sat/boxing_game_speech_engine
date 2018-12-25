@@ -16,7 +16,7 @@ class TrashTalkProcessor
 		score_check = 0
 		rules.each do |key, value|
 			break if key[0] < score_check
-			eval_key = key[1].split(" ").each { |word| word.insert(0, "checks.") unless word.include?("&") }.join(" ")
+			eval_key = format_key(key)
 			if (eval eval_key) == true
 				responses << rules[key][true]
 				score_check = key[0]
@@ -30,6 +30,12 @@ class TrashTalkProcessor
 		else
 			return responses.sample.sample
 		end		
+	end
+
+	def format_key(key)
+		first_pass = key[1].split(" ").each { |word| word.insert(0, "checks.") unless (word.include?("&") || word.include?("!")) }
+		second_pass = first_pass.each { |word| word.delete!("!").insert(0, "!checks.") if word.include?("!") }
+		return second_pass.join(" ")
 	end
 
 end

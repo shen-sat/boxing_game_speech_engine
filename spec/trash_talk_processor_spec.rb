@@ -57,5 +57,22 @@ describe 'trash talk processor class' do
 
 	end
 
+	it 'should respond to query: opponent being champion AND the opponent losing last match AND fighter is not young' do
+		rules[[2, "opponent_is_champ && opponent_won_last"]] = 	{
+																true => [ 	"You're fighting a champ this time",
+												  							"Last time I didn't have the belt to defend"		
+																		]
+																}
+		rules[[3, "opponent_is_champ && opponent_won_last && !fighter_is_young"]] = 	{
+																						true => [ "A specific response" ]
+																						}
+		allow(checks).to receive(:opponent_won_last)	{true}
+		allow(checks).to receive(:opponent_is_champ)	{true}
+		allow(checks).to receive(:fighter_is_young)		{false}
+		trash_talk_processor = TrashTalkProcessor.new(rules)
+		expect(trash_talk_processor.process(checks)).to eq("A specific response")
+
+	end
+
 	
 end
