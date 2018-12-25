@@ -1,15 +1,6 @@
 require_relative '../lib/trash_talk_processor.rb'
 
 describe 'trash talk processor class' do
-
-	# let(:holly)	{ double("holly") }
-	# let(:ronda) { double("ronda") }
-	# let(:query)	{ { :fighter => holly,
-	# 				:opponent => ronda,
-	# 				:history => {
-	# 							:last_fight_winner => holly		
-	# 							} 
-	# 			} }
 	
 	let(:checks)	{ double("checks") }
 	rules = { 	[1, "opponent_won_last"] => 	{	
