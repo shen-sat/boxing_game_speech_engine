@@ -1,4 +1,4 @@
-class Checks
+class RuleChecker
 	attr_reader :fighter, :opponent, :history
 
 	def initialize(query)
