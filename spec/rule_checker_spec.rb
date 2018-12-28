@@ -24,10 +24,5 @@ describe 'RuleChecker class' do
 		allow(rule_checker).to receive(:opponent_is_older)	{ false }
 		expect(rule_checker.opponent_is_older).to eq(false)
 	end
-
-	# it 'should check last fight winner was fighter' do
-	# 	rule_checker = RuleChecker.new(query)
-	# 	expect(rule_checker.opponent_won_last_fight).to eq(false)
-	# end
 	
 end
