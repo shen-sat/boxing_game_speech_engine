@@ -1,3 +1,5 @@
+require 'set'
+
 class QueryBuilder
 
 	def initialize(fighter, opponent, fight_record)
