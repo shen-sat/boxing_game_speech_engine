@@ -7,6 +7,16 @@
 #     expect((press_conference.query_builder).is_a?(QueryBuilder)).to eq(true)
 #   end
 #
+#   it 'should form a query for use by both fighters' do
+#     nunes = double("nunes")
+#     cyborg = double("cyborg")
+#     fight_record = { [nunes, cyborg] => {}  }
 #
+#
+#
+#     press_conference = PressConference.new
+#     press_conference.pre_fight()
+#
+#   end
 #
 # end

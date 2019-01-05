@@ -78,3 +78,6 @@ TODO
 
 NOTE
 - Everytime you add a new method to RuleChecker, you need to write a test for it
+
+WHERE YOU AT:
+Just changed parameters for query builder, now finish press conference and its spec

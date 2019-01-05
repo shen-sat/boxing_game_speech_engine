@@ -40,6 +40,15 @@ describe 'Query Builder class' do
 		expect(query.has_key?(:history)).to eq(true)
 		expect(query[:history].has_key?(:last_fight_winner)).to eq(true)
 		expect(query[:history][:last_fight_winner]).to eq(enemy)
+    expect(query[:history].has_key?(fighter)).to eq(true)
+		expect(query[:history].has_key?(enemy)).to eq(true)
+		expect(query[:history][fighter].has_key?(:no_of_wins)).to eq(true)
+		expect(query[:history][enemy].has_key?(:no_of_wins)).to eq(true)
+		expect(query[:history][enemy][:no_of_wins]).to eq(nil)
+		expect(query[:history][fighter][:no_of_wins]).to eq(nil)
+
+
+
 	end
 
 end
