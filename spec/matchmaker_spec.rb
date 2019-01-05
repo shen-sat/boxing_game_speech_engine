@@ -12,18 +12,7 @@ describe 'Matchmaker class' do
 	it 'should pick two random fighters from a roster' do
 		matchmaker = Matchmaker.new(roster)
 		allow(roster).to receive(:delete_at).and_return(jon, alex)
-
-
-		
-		matchmaker.pick_two_fighters
-		# allow(roster).to receive(:sample)	{ false }
-		# roster.should_receive(:sample).ordered.and_return { jon }
-		# roster.should_receive(:sample).ordered.and_return { alex }
-		# expect([jon, alex]).to eq(matchmaker.pick_two_fighters)
-		# allow(jones).to receive(:rank)	{ 1 }
-		# allow(alex).to receive(:rank)	{ 2 }
-
-
+		expect([jon, alex]).to eq(matchmaker.pick_two_fighters)
 	end
 	
 end
