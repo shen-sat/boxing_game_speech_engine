@@ -2,17 +2,12 @@ require 'set'
 
 class QueryBuilder
 
-	def initialize(fighter, opponent, fight_record)
-		@fighter = fighter
-		@opponent = opponent
+	def build(fighter, opponent, fight_record)
 		pair = [fighter, opponent].to_set
-		@history = fight_record[pair] 
-	end
-
-	def build
+		@history = fight_record[pair]
 		query = {}
-		query[:fighter] = @fighter
-		query[:opponent] = @opponent
+		query[:fighter] = fighter
+		query[:opponent] = opponent
 		query[:history] = @history
 		return query
 	end
