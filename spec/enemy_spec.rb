@@ -1,17 +1,23 @@
-# require_relative '../lib/enemy.rb'
+require_relative '../lib/enemy.rb'
 
-# describe 'enemy class' do
+describe 'enemy class' do
 
-# 	fighter = Enemy.new
-# 	opponent = Enemy.new
+  let(:nunes) {Enemy.new}
+  let(:cyborg) {Enemy.new}
+  let(:pair) {[nunes, cyborg].to_set}
+  let(:fight_record) {{pair => {:last_fight_winner => nunes,
+                                nunes => {:no_of_wins => 1},
+                                cyborg => {:no_of_wins => 0}
+  }}}
 
-# 	fight
+	it 'should form a query' do
+		nunes_query = nunes.build_query(cyborg, fight_record)
+    expect(nunes_query.fighter).to eq(nunes)
+    expect(nunes_query.opponent).to eq(cyborg)
+    expect(nunes_query.history[:last_fight_winner]).to eq(nunes)
+    expect(nunes_query.history[cyborg][:no_of_wins]).to eq(0)
 
+
+	end
 	
-
-# 	it 'choose an appropriate trash talk' do
-# 		# enemy = Enemy.new
-# 		# enemy.
-# 	end
-	
-# end
+end
