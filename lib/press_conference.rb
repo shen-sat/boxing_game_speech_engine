@@ -12,4 +12,12 @@ class PressConference
     fighter.trash_talk(query, trash_talk_processor)
   end
 
+  def start
+    fighters.each do |fighter|
+      opp_as_array = fighters.select {|f| f != fighter}
+      opponent = opp_as_array[0]
+      give_mic(fighter, opponent)
+    end
+  end
+
 end
