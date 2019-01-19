@@ -26,12 +26,12 @@ describe 'enemy class' do
     expect(nunes_query.history[cyborg][:no_of_wins]).to eq(0)
   end
 
-  it 'should trash talk' do
-    another_nunes_query = double("another_nunes_query")
-    allow(another_nunes_query).to receive(:fighter_is_champ) {true}
-    nunes_trash_talk = nunes.trash_talk(another_nunes_query, trash_talk_processor)
-    expect(nunes_trash_talk).to eq("The belt belongs to me!")
-  end
+  # it 'should trash talk' do
+  #   another_nunes_query = double("another_nunes_query")
+  #   allow(another_nunes_query).to receive(:fighter_is_champ) {true}
+  #   nunes_trash_talk = nunes.trash_talk(another_nunes_query, trash_talk_processor)
+  #   expect(nunes_trash_talk).to eq("The belt belongs to me!")
+  # end
 
 
 end

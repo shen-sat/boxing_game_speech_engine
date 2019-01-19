@@ -79,5 +79,7 @@ TODO
 NOTE
 - Everytime you add a new method to RuleChecker, you need to write a test for it
 
-WHERE YOU AT:
-Just changed parameters for query builder, now finish press conference and its spec
+NEXT:
+- finish trash talk processor fix (removing true and false statements)
+- uncomment and fix test in enemy spec
+
