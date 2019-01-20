@@ -39,23 +39,22 @@ describe 'trash talk processor class' do
     trash_talk_processor = TrashTalkProcessor.new(rules)
     expect(trash_talk_processor.process(checks)).to eq("You're fighting a champ this time")
   end
-  #
-  # it 'should respond to query: opponent being champion AND the opponent losing last match AND fighter is not young' do
-  #   rules[[3, "opponent_is_champ && opponent_won_last && !fighter_is_young"]] = {
-  #       true => ["A specific response"]
-  #   }
-  #   allow(checks).to receive(:opponent_won_last) {true}
-  #   allow(checks).to receive(:opponent_is_champ) {true}
-  #   allow(checks).to receive(:fighter_is_young) {false}
-  #   trash_talk_processor = TrashTalkProcessor.new(rules)
-  #   expect(trash_talk_processor.process(checks)).to eq("A specific response")
-  #
-  # end
 
-  # it 'should order rules by score' do
-  #   trash_talk_processor = TrashTalkProcessor.new(rules)
-  #   trash_talk_processor.order_rules_by_score(rules)
-  #   expect(trash_talk_processor.rules.keys.first).to eq([3, "opponent_is_champ && opponent_won_last && !fighter_is_young"])
-  # end
+  it 'should respond to query: opponent being champion AND the opponent losing last match AND fighter is not young' do
+    rules[[3, "opponent_is_champ && opponent_won_last && !fighter_is_young"]] = ["A specific response"]
+
+    allow(checks).to receive(:opponent_won_last) {true}
+    allow(checks).to receive(:opponent_is_champ) {true}
+    allow(checks).to receive(:fighter_is_young) {false}
+    trash_talk_processor = TrashTalkProcessor.new(rules)
+    expect(trash_talk_processor.process(checks)).to eq("A specific response")
+
+  end
+
+  it 'should order rules by score' do
+    trash_talk_processor = TrashTalkProcessor.new(rules)
+    trash_talk_processor.order_rules_by_score(rules)
+    expect(trash_talk_processor.rules.keys.first).to eq([3, "opponent_is_champ && opponent_won_last && !fighter_is_young"])
+  end
 
 end

@@ -30,10 +30,9 @@ class TrashTalkProcessor
   end
 
   def format_key(key)
-    first_pass = key[1].split(" ").each {|word| word.insert(0, "checks.") unless (word.include?("&") )}
-    # second_pass = first_pass.each {|word| word.delete!("!").insert(0, "!checks.") if word.include?("!")}
-    return first_pass.join(" ")
-    # return second_pass.join(" ")
+    first_pass = key[1].split(" ").each {|word| word.insert(0, "checks.") unless ((word.include?("&") || word.include?("!")))}
+    second_pass = first_pass.each {|word| word.delete!("!").insert(0, "!checks.") if word.include?("!")}
+    return second_pass.join(" ")
   end
 
 end
