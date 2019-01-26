@@ -29,15 +29,15 @@ describe 'trash talk processor class' do
   end
 
   it 'should respond to query: opponent being champion AND the opponent losing last match' do
-    rules[[2, "opponent_is_champ && opponent_won_last"]] = ["You're fighting a champ this time",
-                                                            "Last time I didn't have the belt to defend"
+    rules[[2, "opponent_is_champ && opponent_won_last"]] = ["This time I'll beat you, the belt is a bonus",
+                                                            "Last time I didn't have the belt to aim for"
     ]
 
     allow(checks).to receive(:opponent_won_last) {true}
     allow(checks).to receive(:opponent_is_champ) {true}
-    allow(rules[[2, "opponent_is_champ && opponent_won_last"]]).to receive(:sample) {"You're fighting a champ this time"}
+    allow(rules[[2, "opponent_is_champ && opponent_won_last"]]).to receive(:sample) {"This time I'll beat you, the belt is a bonus"}
     trash_talk_processor = TrashTalkProcessor.new(rules)
-    expect(trash_talk_processor.process(checks)).to eq("You're fighting a champ this time")
+    expect(trash_talk_processor.process(checks)).to eq("This time I'll beat you, the belt is a bonus")
   end
 
   it 'should respond to query: opponent being champion AND the opponent losing last match AND fighter is not young' do
