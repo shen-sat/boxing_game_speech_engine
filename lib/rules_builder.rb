@@ -11,9 +11,21 @@ class RulesBuilder
     @responses = []
   end
 
+  def clean_rules_contents
+    rules_contents.delete_row(0)
+    sorted_rules_contents = []
+    rules_contents.each do |row|
+      sorted_rules_contents << row
+    end
+    another_array = sorted_rules_contents.sort_by! { |row| row[0].value }.reverse!
+    @rules_contents = another_array
+  end
+
   def build
+    clean_rules_contents
+    puts rules_contents[0][0].value
     rules_contents.each_with_index do |row, index|
-      next if row == rules_contents.first
+      # next if row == rules_contents.first
       score = row[0].value
       rule = row[1].value
       worksheets.each do |sheet|
