@@ -34,6 +34,9 @@ class RulesBuilder
         end
       end
       rules.merge!([score, rule] => responses)
+      puts "score is #{score}, rule is #{rule} and respones are #{responses}"
+      #TODO fix test (responses for opponent_is_champ && opponent_is_old not getting picked up)
+      #TODO add to spec test for checking that all contents have corresponding sheet name
     end
     rules
   end
