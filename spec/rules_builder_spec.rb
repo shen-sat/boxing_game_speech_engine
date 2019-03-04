@@ -19,8 +19,7 @@ describe 'rules builder class' do
     rules_builder = RulesBuilder.new(workbook_complex)
     rules = rules_builder.build
     expect(rules.keys.first[0]).to eq(2)
-
-    #TODO add new rule to spreadsheet, then build method for ordering, then build and check for first rule
+    expect(rules.keys.first[1]).to eq("opponent_is_champ && opponent_is_old")
   end
 
 

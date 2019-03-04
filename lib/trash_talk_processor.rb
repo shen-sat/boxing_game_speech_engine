@@ -6,7 +6,7 @@ class TrashTalkProcessor
   end
 
   def order_rules_by_score(rules)
-    ordered_rules = rules.sort_by {|key| key}.to_h.to_a.reverse.to_h
+    ordered_rules = rules.sort_by {|key| key}.reverse.to_h
     return ordered_rules
 
   end
