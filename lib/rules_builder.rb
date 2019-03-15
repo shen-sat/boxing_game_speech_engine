@@ -1,26 +1,20 @@
 class RulesBuilder
-  attr_accessor :sheets, :workbook
+  attr_accessor :sheets, :workbook, :rules
 
   def initialize(file)
     @workbook = file
     @sheets = workbook.sheets
+    @rules = {}
   end
 
   def build
-    rules = {}
     contents_sheet = workbook.sheet(0)
     contents_sheet.each do |row|
       score = row[0]
       condition =  row[1]
+      rules[[score, condition]] = []
       workbook.each_with_pagename do |name, sheet|
-        temp_array = []
-        if condition == name
-          sheet.each do |line|
-            temp_array << line[0]
-          end
-          rules[[score, condition]] = temp_array
-          temp_array = []
-        end
+        sheet.each { |line| rules[[score, condition]] << line[0] } if condition == name
       end
     end
     return rules

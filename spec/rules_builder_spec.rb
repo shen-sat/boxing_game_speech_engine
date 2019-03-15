@@ -13,6 +13,6 @@ describe 'trash talk processor class' do
     expect(rules[rules.keys.first][1]).to eq('Your time is up, old timer')
   end
 
-  
+
 
 end
