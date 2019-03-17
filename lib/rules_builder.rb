@@ -8,10 +8,20 @@ class RulesBuilder
   end
 
   def build
-    puts "hello"
-    workbook.sheet(0).parse.each do |row|
-      puts "this is a row #{row}"
-      puts "hey"
+    workbook.sheet(0).to_a.each do |row|
+      score = row[0]
+      condition = row[1]
+      responses = []
+      puts "this is a score #{score}"
+      puts "this is a condition #{condition}"
+      workbook.each_with_pagename do |name, sheet|
+        if name == condition
+          sheet.to_a.each do |line|
+            responses << line[0]
+          end
+        end
+      end
+      rules[[score, condition]] = responses
     end
     return rules
   end
