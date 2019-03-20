@@ -1,6 +1,9 @@
 class FightRecordBuilder
+	attr_reader :win_methods
+
 	def initialize(pair_matrix)
 		@pair_matrix = pair_matrix
+		@win_methods = ['KO', 'DQ', 'Decision']
 	end
 
 	def build
@@ -8,7 +11,7 @@ class FightRecordBuilder
 		@pair_matrix.each do |pair|
 			fight_record[pair] = {}
 			fight_record[pair][:last_fight_winner] = pair.to_a.sample
-			fight_record[pair][:last_fight_win_method] = nil
+			fight_record[pair][:last_fight_win_method] = win_methods.sample
 			fight_record[pair][:last_fight_no_of_rounds] = nil
 			first_fighter = pair.to_a[0]
 			second_fighter = pair.to_a[1]
