@@ -44,11 +44,13 @@ describe 'Fight Record Builder class' do
 		allow(pair_matrix[0]).to receive(:to_a) {selected_pair}
 		allow(selected_pair).to receive(:sample) {frankie}
 		allow(fight_record_builder.win_methods).to receive(:sample) {'KO'}
+		allow(fight_record_builder.rounds).to receive(:sample) {3}
 
 		fight_record = fight_record_builder.build
 
 		expect(fight_record[[conor, frankie].to_set][:last_fight_winner]).to eq(frankie)
 		expect(fight_record[[conor, frankie].to_set][:last_fight_win_method]).to eq('KO')
+		expect(fight_record[[conor, frankie].to_set][:last_fight_no_of_rounds]).to eq(3)
 
   end
 
