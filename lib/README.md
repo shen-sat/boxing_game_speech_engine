@@ -9,7 +9,7 @@ A roster is an array of enemies.
 
 -- Then we build a record of the history of interactions between the fighters --
 A PairMatrixBuilder takes in a roster and builds an array of pairs of enemies (ie a pair matrix).
-Each pair is a set, not an array.
+Each pair is a set, not an array. [But all the sets are contained within an awrray]
 
 A FightRecordBuilder takes in a pair matrix and builds a fight record (a hash):
 There are two levels to the hash. The first is:
