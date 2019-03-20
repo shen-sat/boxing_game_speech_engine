@@ -7,7 +7,7 @@ class FightRecordBuilder
 		fight_record = {}
 		@pair_matrix.each do |pair|
 			fight_record[pair] = {}
-			fight_record[pair][:last_fight_winner] = nil
+			fight_record[pair][:last_fight_winner] = pair.to_a.sample
 			fight_record[pair][:last_fight_win_method] = nil
 			fight_record[pair][:last_fight_no_of_rounds] = nil
 			first_fighter = pair.to_a[0]

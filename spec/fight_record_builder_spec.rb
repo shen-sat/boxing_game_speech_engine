@@ -35,6 +35,15 @@ describe 'Fight Record Builder class' do
 		expect(fight_record[[conor, player].to_set].has_key?(player)).to eq(true)
 		expect(fight_record[[conor, player].to_set][conor].has_key?(:no_of_wins)).to eq(true)
 		expect(fight_record[[conor, player].to_set][player].has_key?(:no_of_wins)).to eq(true)
-	end
+  end
+
+	it 'should randomly assign values to the fight record' do
+    selected_pair = [conor, frankie]
+    allow(pair_matrix[0]).to receive(:to_a) {selected_pair}
+    allow(selected_pair).to receive(:sample) {frankie}
+
+		expect(fight_record[[conor, frankie].to_set][:last_fight_winner]).to eq(frankie)
+
+  end
 
 end
