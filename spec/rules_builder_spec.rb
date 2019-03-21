@@ -3,9 +3,9 @@ require_relative '../lib/rules_builder'
 
 describe 'trash talk processor class' do
 
-  simple_file = Roo::Spreadsheet.open('simple_chat.ods')
-  multiple_simple_file = Roo::Spreadsheet.open('multiple_simple_chat.ods')
-  simple_and_complex_file = Roo::Spreadsheet.open('simple_and_complex.ods')
+  simple_file = Roo::Spreadsheet.open('spec/simple_chat.ods')
+  multiple_simple_file = Roo::Spreadsheet.open('spec/multiple_simple_chat.ods')
+  simple_and_complex_file = Roo::Spreadsheet.open('spec/simple_and_complex.ods')
 
   # it 'should build a simple rule' do
   #   rules_builder = RulesBuilder.new(simple_file)
