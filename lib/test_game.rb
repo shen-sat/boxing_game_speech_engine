@@ -3,6 +3,11 @@ require_relative 'enemy.rb'
 require_relative 'pair_matrix_builder.rb'
 require_relative 'fight_record_builder.rb'
 require_relative 'rules_builder.rb'
+require_relative 'trash_talk_processor.rb'
+require_relative 'press_conference.rb'
+require_relative 'query.rb'
+
+require 'ap'
 require 'set'
 require 'roo'
 
@@ -22,4 +27,15 @@ fight_record = FightRecordBuilder.new(pair_matrix).build
 #initialize the trash-talk processor
 file = Roo::Spreadsheet.open('lib/chat.ods')
 rules_builder = RulesBuilder.new(file)
+rules_builder.order_contents
+rules = rules_builder.build
+
+trash_talk_processor = TrashTalkProcessor.new(rules)
+
+press_conference = PressConference.new(roster, fight_record, trash_talk_processor)
+press_conference.start
+
+
+
+
 
