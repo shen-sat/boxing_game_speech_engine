@@ -24,4 +24,21 @@ describe 'Query class' do
 
     end
 
+  it 'should successfully assess if an opponent is ranked lower' do
+    allow(holly).to receive(:rank) {0}
+    allow(ronda).to receive(:rank) {2}
+    query = Query.new(holly, ronda, fight_record)
+    expect(query.opponent_is_lower_ranked).to eq(true)
+    expect(query.opponent_is_higher_ranked).to eq(false)
+
+  end
+
+  it 'should successfully asses if an opponent is ranked higher' do
+    allow(holly).to receive(:rank) {0}
+    allow(ronda).to receive(:rank) {2}
+    query = Query.new(ronda, holly, fight_record)
+    expect(query.opponent_is_lower_ranked).to eq(false)
+    expect(query.opponent_is_higher_ranked).to eq(true)
+  end
+
 end

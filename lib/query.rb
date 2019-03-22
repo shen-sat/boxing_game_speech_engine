@@ -8,4 +8,12 @@ class Query
 		@history = fight_record[pair]
 	end
 
+  def opponent_is_lower_ranked
+		fighter.rank < opponent.rank
+	end
+
+  def opponent_is_higher_ranked
+		fighter.rank > opponent.rank
+	end
+
 end
