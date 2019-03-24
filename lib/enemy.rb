@@ -8,7 +8,7 @@ class Enemy < Fighter
   end
 
   def trash_talk(query, trash_talk_processor)
-    return trash_talk_processor.process(query)
+    puts trash_talk_processor.process(query)
   end
 
 end

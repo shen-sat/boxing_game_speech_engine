@@ -8,8 +8,10 @@ class PressConference
   end
 
   def give_mic(fighter, opponent)
+    puts "#{fighter.name} '#{fighter.nickname}' #{fighter.lastname} says:"
     query = fighter.build_query(opponent, fight_record)
     fighter.trash_talk(query, trash_talk_processor)
+    puts "----------------------------------"
   end
 
   def start
