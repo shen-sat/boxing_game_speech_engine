@@ -29,25 +29,44 @@ if command_line_args.include?('player')
   puts "Enter yor LAST name:"
   player_lastname = STDIN.gets.chomp
 
-
   puts "Enter your NICKNAME:"
   player_nickname = STDIN.gets.chomp
 
-  puts "Enter your age:"
-  player_age = STDIN.gets.chomp
+  player_age = nil
+  loop do
+    puts "Enter your age:"
+    player_age = STDIN.gets.chomp
+    if /^\d*$/.match(player_age)
+      puts "It matched!"
+      break
+    else
+      puts "It didn't match!"
+    end
+  end
 
-  puts "Enter your rank:"
-  player_rank = STDIN.gets.chomp
+  player_rank = nil
+  loop do
+    puts "Enter your rank:"
+    player_rank = STDIN.gets.chomp
+    if /^\d*$/.match(player_rank)
+      puts "It matched!"
+      break
+    else
+      puts "It didn't match!"
+    end
+  end
 
   player = EnemyBuilder.new.set_name(player_name).set_age(player_age).set_lastname(player_lastname).set_nickname(player_nickname).set_rank(player_rank).build
+  puts "Player age is #{player.age}"
+  puts "Player rank is #{player.rank}"
 else
   player = EnemyBuilder.new.set_name('Little').set_age(18).set_lastname('Mac').set_nickname('Punch-Out').set_rank(5).build
 end
 
 
 #skipping roster builder and creating enemies and roster myself
-joe = EnemyBuilder.new.set_name('Joe').set_age('40').set_lastname('Jaw').set_nickname('Glass').set_rank('10').build
-kid = EnemyBuilder.new.set_name('Kid').set_age('18').set_lastname('Smith').set_nickname('Quick').set_rank('2').build
+joe = EnemyBuilder.new.set_name('Joe').set_age(40).set_lastname('Jaw').set_nickname('Glass').set_rank(10).build
+kid = EnemyBuilder.new.set_name('Kid').set_age(18).set_lastname('Smith').set_nickname('Quick').set_rank(2).build
 
 roster = [joe, kid]
 
