@@ -19,15 +19,25 @@ class PlayerCreator
       player_age = nil
       loop do
         puts "Enter your age:"
-        player_age = STDIN.gets.chomp
-        /^\d*$/.match(player_age) ? break : puts("Age must be a number")
+        age_input = STDIN.gets.chomp
+        if /^\d*$/.match(age_input)
+          player_age = age_input.to_i
+          break
+        else
+          puts("Age must be a number")
+        end
       end
 
       player_rank = nil
       loop do
         puts "Enter your rank:"
-        player_rank = STDIN.gets.chomp
-        /^\d*$/.match(player_rank) ? break : puts("Rank must be a number")
+        rank_input = STDIN.gets.chomp
+        if /^\d*$/.match(rank_input)
+          player_rank = rank_input.to_i
+          break
+        else
+          puts("Rank must be a number")
+        end
       end
 
       player = EnemyBuilder.new.set_name(player_name).set_age(player_age).set_lastname(player_lastname).set_nickname(player_nickname).set_rank(player_rank).build
