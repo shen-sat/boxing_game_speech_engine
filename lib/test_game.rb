@@ -23,7 +23,9 @@ command_line_args.each do |arg|
   end
 end
 
+#Create player
 player = PlayerCreator.new(command_line_args).create
+puts "Player name is #{player.name}, age is #{player.age}, rank is #{player.rank}"
 
 #skipping roster builder and creating enemies and roster myself
 joe = EnemyBuilder.new.set_name('Joe').set_age(40).set_lastname('Jaw').set_nickname('Glass').set_rank(10).build

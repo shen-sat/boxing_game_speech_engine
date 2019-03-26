@@ -25,8 +25,7 @@ describe 'enemy class' do
   it 'should trash talk' do
     another_nunes_query = double("another_nunes_query")
     allow(another_nunes_query).to receive(:fighter_is_champ) {true}
-    nunes_trash_talk = nunes.trash_talk(another_nunes_query, trash_talk_processor)
-    expect(nunes_trash_talk).to eq("The belt belongs to me!")
+    expect{ nunes.trash_talk(another_nunes_query, trash_talk_processor) }.to output("The belt belongs to me!\n").to_stdout
   end
 
 

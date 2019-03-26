@@ -8,10 +8,10 @@ class PressConference
   end
 
   def give_mic(fighter, opponent)
-    puts "#{fighter.name} '#{fighter.nickname}' #{fighter.lastname} says:"
+    narration(fighter)
     query = fighter.build_query(opponent, fight_record)
     fighter.trash_talk(query, trash_talk_processor)
-    puts "----------------------------------"
+    insert_dotted_line
   end
 
   def start
@@ -20,6 +20,14 @@ class PressConference
       opponent = opp_as_array[0]
       give_mic(fighter, opponent)
     end
+  end
+
+  def narration(fighter)
+    puts "#{fighter.name} '#{fighter.nickname}' #{fighter.lastname} says:"
+  end
+
+  def insert_dotted_line
+    puts "----------------------------------"
   end
 
 end

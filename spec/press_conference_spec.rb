@@ -13,6 +13,10 @@ describe 'PressConference class' do
 
   it 'should form a query for fighter from fighter POV' do
     press_conference = PressConference.new(fighters, fight_record, trash_talk_processor)
+    #this line just stubs the narration in the give_mic method, thus removing its puts statement from console output
+    allow(press_conference).to receive(:narration)
+    #this line also stubs the dotted line in the give_mic method and removes its puts statement from console output
+    allow(press_conference).to receive(:insert_dotted_line)
     expect(dillashaw).to receive(:build_query).with(cejudo, fight_record).ordered { query }
     expect(dillashaw).to receive(:trash_talk).with(query, trash_talk_processor).ordered
     press_conference.give_mic(dillashaw, cejudo)
