@@ -6,6 +6,7 @@ require_relative 'rules_builder.rb'
 require_relative 'trash_talk_processor.rb'
 require_relative 'press_conference.rb'
 require_relative 'query.rb'
+require_relative 'player_creator.rb'
 
 require 'ap'
 require 'set'
@@ -22,47 +23,7 @@ command_line_args.each do |arg|
   end
 end
 
-if command_line_args.include?('player')
-  puts "Enter yor FIRST name:"
-  player_name = STDIN.gets.chomp
-
-  puts "Enter yor LAST name:"
-  player_lastname = STDIN.gets.chomp
-
-  puts "Enter your NICKNAME:"
-  player_nickname = STDIN.gets.chomp
-
-  player_age = nil
-  loop do
-    puts "Enter your age:"
-    player_age = STDIN.gets.chomp
-    if /^\d*$/.match(player_age)
-      puts "It matched!"
-      break
-    else
-      puts "It didn't match!"
-    end
-  end
-
-  player_rank = nil
-  loop do
-    puts "Enter your rank:"
-    player_rank = STDIN.gets.chomp
-    if /^\d*$/.match(player_rank)
-      puts "It matched!"
-      break
-    else
-      puts "It didn't match!"
-    end
-  end
-
-  player = EnemyBuilder.new.set_name(player_name).set_age(player_age).set_lastname(player_lastname).set_nickname(player_nickname).set_rank(player_rank).build
-  puts "Player age is #{player.age}"
-  puts "Player rank is #{player.rank}"
-else
-  player = EnemyBuilder.new.set_name('Little').set_age(18).set_lastname('Mac').set_nickname('Punch-Out').set_rank(5).build
-end
-
+player = PlayerCreator.new(command_line_args).create
 
 #skipping roster builder and creating enemies and roster myself
 joe = EnemyBuilder.new.set_name('Joe').set_age(40).set_lastname('Jaw').set_nickname('Glass').set_rank(10).build
