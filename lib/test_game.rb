@@ -11,23 +11,36 @@ require 'ap'
 require 'set'
 require 'roo'
 
-puts "Enter yor FIRST name:"
-player_name = gets
+accepted_command_line_args = ['default-player', 'player']
 
-puts "Enter yor LAST name:"
-player_lastname = gets
+#Validate command-line args
+command_line_args = ARGV
+command_line_args.each do |arg|
+  if !(accepted_command_line_args.include?(arg))
+    puts "Exiting because argument #{arg} not recognised"
+    abort
+  end
+end
 
 
-puts "Enter your NICKNAME:"
-player_nickname = gets
+# puts "Enter yor FIRST name:"
+# player_name = gets
+#
+# puts "Enter yor LAST name:"
+# player_lastname = gets
+#
+#
+# puts "Enter your NICKNAME:"
+# player_nickname = gets
+#
+# puts "Enter your age:"
+# player_age = gets
+#
+# puts "Enter your rank:"
+# player_rank = gets
 
-puts "Enter your age:"
-player_age = gets
-
-puts "Enter your rank:"
-player_rank = gets
-
-player = EnemyBuilder.new.set_name(player_name).set_age(player_age).set_lastname(player_lastname).set_nickname(player_nickname).set_rank(player_rank).build
+# player = EnemyBuilder.new.set_name(player_name).set_age(player_age).set_lastname(player_lastname).set_nickname(player_nickname).set_rank(player_rank).build
+default_player = EnemyBuilder.new.set_name('Little').set_age(18).set_lastname('Mac').set_nickname('Punch-Out').set_rank(5).build
 
 #skipping roster builder and creating enemies and roster myself
 joe = EnemyBuilder.new.set_name('Joe').set_age('40').set_lastname('Jaw').set_nickname('Glass').set_rank('10').build
