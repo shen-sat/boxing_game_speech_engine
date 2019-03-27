@@ -7,6 +7,7 @@ require_relative 'trash_talk_processor.rb'
 require_relative 'press_conference.rb'
 require_relative 'query.rb'
 require_relative 'player_creator.rb'
+require_relative 'fight_selection.rb'
 
 require 'ap'
 require 'set'
@@ -50,33 +51,8 @@ rules = rules_builder.build
 trash_talk_processor = TrashTalkProcessor.new(rules)
 
 #Choose fighters to fight
-pair_of_fighters = []
-if command_line_args.include?('choose-fight')
-  first_fighter_selection = nil
-  second_fighter_selection = nil
-  loop do
-    puts "Who should fight? Pick FIRST fighter:"
-    roster.each do |fighter|
-      puts "[#{roster.index(fighter)}] #{fighter.name}"
-    end
-    first_fighter_selection = STDIN.gets.chomp.to_i
-    first_fighter_selection < roster.size ? break : puts("Please pick a given number")
-  end
-  first_fighter = roster[first_fighter_selection]
-  roster.delete(first_fighter)
-  loop do
-    puts "Now pick SECOND fighter:"
-    roster.each do |fighter|
-      puts "[#{roster.index(fighter)}] #{fighter.name}"
-    end
-    second_fighter_selection = STDIN.gets.chomp.to_i
-    second_fighter_selection < roster.size ? break : puts("Please pick a given number")
-  end
-  second_fighter = roster[second_fighter_selection]
-  pair_of_fighters = [first_fighter, second_fighter]
-else
-  pair_of_fighters = [joe, kid]
-end
+fight_selection = FighterSelection.new(command_line_args, roster)
+pair_of_fighters = fight_selection.select
 
 #Initiate press conference
 press_conference = PressConference.new(pair_of_fighters, fight_record, trash_talk_processor)
