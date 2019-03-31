@@ -27,6 +27,11 @@ class EnemyBuilder
 	def set_age(age)
 		@enemy.age = age
 		return self
+		end
+
+	def set_no_of_fights(fights)
+		@enemy.no_of_fights = fights
+		return self
 	end
 
 	def build
