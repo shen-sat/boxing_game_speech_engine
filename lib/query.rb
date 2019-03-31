@@ -20,4 +20,8 @@ class Query
 		fighter.age - opponent.age > 10
 	end
 
+  def opponent_is_older
+		opponent.age - fighter.age > 10
+	end
+
 end

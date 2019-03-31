@@ -20,13 +20,23 @@ describe 'Query class' do
     it 'should have access to all history data' do
       query = Query.new(holly, ronda, fight_record)
       expect(query.history[:last_fight_winner]).to eq(holly)
+      expect(query.history[:last_fight_win_method]).to eq('KO')
+      expect(query.history[:last_fight_no_of_rounds]).to eq(3)
+
       end
 
-    it 'should successfully access if an opponent is younger' do
+    it 'should successfully assess if an opponent is younger' do
       allow(holly).to receive(:age) {40}
       allow(ronda).to receive(:age) {29}
       query = Query.new(holly, ronda, fight_record)
       expect(query.opponent_is_younger).to eq(true)
+      end
+
+  it 'should successfully assess if an opponent is older' do
+      allow(holly).to receive(:age) {40}
+      allow(ronda).to receive(:age) {29}
+      query = Query.new(ronda, holly, fight_record)
+      expect(query.opponent_is_older).to eq(true)
     end
 
 
