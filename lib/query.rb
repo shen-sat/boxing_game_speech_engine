@@ -8,20 +8,28 @@ class Query
 		@history = fight_record[pair]
 	end
 
-  def opponent_is_lower_ranked
-		fighter.rank < opponent.rank
+  def opponent_has_few_fights
+		opponent.no_of_fights < 3
 	end
 
-  def opponent_is_higher_ranked
-		fighter.rank > opponent.rank
-		end
-
-	def opponent_is_younger
-		fighter.age - opponent.age > 10
+  def opponent_is_top_ranked
+		opponent.rank < 4
 	end
 
-  def opponent_is_older
-		opponent.age - fighter.age > 10
+  def opponent_won_last_fight
+		history[:last_fight_winner] == opponent
+	end
+
+  def fighter_about_to_retire
+		fighter.age > 39 && fighter.no_of_fights > 29
+	end
+
+  def fighter_is_champ
+		fighter.rank == 0
+	end
+
+  def opponent_is_young
+		opponent.age < 20
 	end
 
 end
