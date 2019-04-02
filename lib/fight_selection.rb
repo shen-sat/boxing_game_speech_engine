@@ -33,7 +33,7 @@ class FighterSelection
       pair_of_fighters = [first_fighter, second_fighter]
       return pair_of_fighters
     else
-      roster.delete(player)
+      roster.delete(roster[0])
       first_fighter = roster.delete(roster.sample)
       second_fighter = roster.delete(roster.sample)
       pair_of_fighters = [first_fighter, second_fighter]

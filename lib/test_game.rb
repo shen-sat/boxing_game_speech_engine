@@ -8,6 +8,7 @@ require_relative 'press_conference.rb'
 require_relative 'query.rb'
 require_relative 'player_creator.rb'
 require_relative 'fight_selection.rb'
+require_relative 'player.rb'
 
 require 'ap'
 require 'set'
@@ -29,8 +30,8 @@ player = PlayerCreator.new(command_line_args).create
 puts "Player name is #{player.name}, age is #{player.age}, rank is #{player.rank}"
 
 #skipping roster builder and creating enemies and roster myself
-joe = EnemyBuilder.new.set_name('Joe').set_age(40).set_lastname('Jaw').set_nickname('Grim').set_rank(2).build
-kid = EnemyBuilder.new.set_name('Kid').set_age(18).set_lastname('Smith').set_nickname('Quick').set_rank(10).build
+joe = EnemyBuilder.new.set_name('Joe').set_age(40).set_lastname('Jaw').set_nickname('Grim').set_rank(0).set_no_of_fights(99).build
+kid = EnemyBuilder.new.set_name('Kid').set_age(18).set_lastname('Smith').set_nickname('Quick').set_rank(1).set_no_of_fights(5).build
 
 roster = [player, joe, kid]
 
