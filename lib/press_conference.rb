@@ -7,13 +7,6 @@ class PressConference
     @trash_talk_processor = trash_talk_processor
   end
 
-  def give_mic(fighter, opponent)
-    narration(fighter)
-    query = fighter.build_query(opponent, fight_record)
-    fighter.trash_talk(query, trash_talk_processor)
-    insert_dotted_line
-  end
-
   def start
     fighters.each do |fighter|
       opp_as_array = fighters.select {|f| f != fighter}
@@ -21,6 +14,18 @@ class PressConference
       give_mic(fighter, opponent)
     end
   end
+
+  def give_mic(fighter, opponent)
+    narration(fighter)
+    if fighter.is_a?(Player)
+      fighter.trash_talk
+    else
+      query = fighter.build_query(opponent, fight_record)
+      fighter.trash_talk(query, trash_talk_processor)
+    end
+    insert_dotted_line
+  end
+
 
   def narration(fighter)
     puts "#{fighter.name} '#{fighter.nickname}' #{fighter.lastname} says:"
