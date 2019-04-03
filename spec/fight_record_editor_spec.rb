@@ -36,5 +36,15 @@ describe 'Fight Record Editor class' do
     fight_record_editor.show_menu_pairs
   end
 
+  it 'should display the fight record for a pair as a numbered menu' do
+    fight_record_editor = FightRecordEditor.new(fight_record)
+    expect(STDOUT).to receive(:puts).with("[0] last_fight_winner: kronos")
+    expect(STDOUT).to receive(:puts).with("[1] last_fight_win_method: Decision")
+    choice = 1
+    fight_record_editor.show_menu_pair_fight_record(choice)
+  end
+
+
+
 
 end
