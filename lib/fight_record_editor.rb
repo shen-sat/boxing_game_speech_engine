@@ -23,5 +23,8 @@ class FightRecordEditor
     selected_pair.to_a.each_with_index do |fighter, i|
       puts "[#{i}] #{fighter.name}"
     end
+    input = STDIN.gets.to_i
+    selected_fighter = selected_pair.to_a[input]
+    fight_record[selected_pair][:last_fight_winner] = selected_fighter
   end
 end

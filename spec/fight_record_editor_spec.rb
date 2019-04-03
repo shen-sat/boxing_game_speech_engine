@@ -20,7 +20,7 @@ describe 'Fight Record Editor class' do
   fight_record[mk][:last_fight_win_method] = 'KO'
   fight_record[kp][:last_fight_winner] = kronos
   fight_record[kp][:last_fight_win_method] = 'Decision'
-  fight_record[mp][:last_fight_winner] = player
+  fight_record[mp][:last_fight_winner] = miyazaki
   fight_record[mp][:last_fight_win_method] = nil
 
   it 'should initialize with a fight record' do
@@ -45,13 +45,22 @@ describe 'Fight Record Editor class' do
   end
 
   it 'should edit last fight winner' do
+    #Given
     fight_record_editor = FightRecordEditor.new(fight_record)
     selected_pair = mp
+
+    #Then part 1
     expect(STDOUT).to receive(:puts).with("What would you like the value to be?")
     expect(STDOUT).to receive(:puts).with("[0] miyazaki")
     expect(STDOUT).to receive(:puts).with("[1] player")
-    # allow(STDIN).to receive(:gets) {"0"}
+
+    #When
+    expect(fight_record_editor.fight_record[mp][:last_fight_winner]).to eq(miyazaki)
+    allow(STDIN).to receive(:gets) {"1"}
     fight_record_editor.edit_last_fight_winner(selected_pair)
+
+    #Then part 2
+    expect(fight_record_editor.fight_record[mp][:last_fight_winner]).to eq(player)
 
   end
 
