@@ -6,7 +6,7 @@ class PlayerCreator
   end
 
   def create
-    if command_line_args == "player"
+    if command_line_args.include?("player")
       create_input_player
     else
       create_default_player
@@ -26,11 +26,17 @@ class PlayerCreator
 
   def create_input_player
     player = Player.new
+    puts "Enter name:"
     player.name = STDIN.gets
+    puts "Enter lastname:"
     player.lastname = STDIN.gets
+    puts "Enter nickname:"
     player.nickname = STDIN.gets
+    puts "Enter age:"
     player.age = STDIN.gets.to_i
+    puts "Enter rank:"
     player.rank = STDIN.gets.to_i
+    puts "Enter number of fights:"
     player.no_of_fights = STDIN.gets.to_i
     return player
   end

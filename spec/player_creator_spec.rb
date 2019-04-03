@@ -21,13 +21,14 @@ describe 'Player Creator class' do
   end
 
   it 'should create an inputted player with relevant args' do
-    command_line_args = "player"
+    command_line_args = ["player"]
     player_creator = PlayerCreator.new(command_line_args)
-    # allow(STDIN).to receive(:gets) {'Balboa'}
-    # allow(STDIN).to receive(:gets) {'Fictional'}
-    # allow(STDIN).to receive(:gets) {'28'}
-    # allow(STDIN).to receive(:gets) {'20'}
-    # allow(STDIN).to receive(:gets) {'10'}
+    expect(STDOUT).to receive(:puts).with('Enter name:')
+    expect(STDOUT).to receive(:puts).with('Enter lastname:')
+    expect(STDOUT).to receive(:puts).with('Enter nickname:')
+    expect(STDOUT).to receive(:puts).with('Enter age:')
+    expect(STDOUT).to receive(:puts).with('Enter rank:')
+    expect(STDOUT).to receive(:puts).with('Enter number of fights:')
     allow(STDIN).to receive(:gets).and_return('Rocky', 'Balboa', 'Fictional', '19', '30', '2')
 
     player = player_creator.create
