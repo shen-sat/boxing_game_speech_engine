@@ -27,17 +27,17 @@ class PlayerCreator
   def create_input_player
     player = Player.new
     puts "Enter name:"
-    player.name = STDIN.gets
+    player.name = STDIN.gets.chomp
     puts "Enter lastname:"
-    player.lastname = STDIN.gets
+    player.lastname = STDIN.gets.chomp
     puts "Enter nickname:"
-    player.nickname = STDIN.gets
+    player.nickname = STDIN.gets.chomp
     puts "Enter age:"
-    player.age = STDIN.gets.to_i
+    player.age = STDIN.gets.chomp.to_i
     puts "Enter rank:"
-    player.rank = STDIN.gets.to_i
+    player.rank = STDIN.gets.chomp.to_i
     puts "Enter number of fights:"
-    player.no_of_fights = STDIN.gets.to_i
+    player.no_of_fights = STDIN.gets.chomp.to_i
     return player
   end
 end
