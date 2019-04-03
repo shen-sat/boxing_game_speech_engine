@@ -17,4 +17,11 @@ class FightRecordEditor
       puts "[#{i}] #{k}: #{fight_record[selected_pair][k].is_a?(Fighter) ? fight_record[selected_pair][k].name : fight_record[selected_pair][k]}"
     end
   end
+
+  def edit_last_fight_winner(selected_pair)
+    puts "What would you like the value to be?"
+    selected_pair.to_a.each_with_index do |fighter, i|
+      puts "[#{i}] #{fighter.name}"
+    end
+  end
 end

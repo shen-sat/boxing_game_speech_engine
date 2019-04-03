@@ -44,7 +44,16 @@ describe 'Fight Record Editor class' do
     fight_record_editor.show_menu_pair_fight_record(choice)
   end
 
+  it 'should edit last fight winner' do
+    fight_record_editor = FightRecordEditor.new(fight_record)
+    selected_pair = mp
+    expect(STDOUT).to receive(:puts).with("What would you like the value to be?")
+    expect(STDOUT).to receive(:puts).with("[0] miyazaki")
+    expect(STDOUT).to receive(:puts).with("[1] player")
+    # allow(STDIN).to receive(:gets) {"0"}
+    fight_record_editor.edit_last_fight_winner(selected_pair)
 
+  end
 
 
 end
