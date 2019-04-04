@@ -29,7 +29,7 @@ class Query
 	end
 
   def opponent_is_young
-		opponent.age < 20
+		opponent.age < 25
 	end
 
 end

@@ -27,9 +27,9 @@ describe 'fight selector class' do
     expect(STDOUT).to receive(:puts).with('Now select second fighter:')
     expect(STDOUT).to receive(:puts).with("[0] leonardo 'leads' blue")
     expect(STDOUT).to receive(:puts).with("[1] donatello 'machines' purple")
-
-    fight_selector.select
-
+    allow(STDIN).to receive_message_chain(:gets, :chomp, :to_i).and_return(1)
+    expect(STDOUT).to receive(:puts).with("You chose raphael and donatello")
+    expect(fight_selector.select).to eq([raphael, donatello])
   end
 
 
