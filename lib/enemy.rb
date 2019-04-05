@@ -1,5 +1,4 @@
 require_relative 'fighter'
-require 'ap'
 
 class Enemy < Fighter
 

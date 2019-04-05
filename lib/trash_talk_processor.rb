@@ -16,7 +16,7 @@ class TrashTalkProcessor
     score_check = 0
     rules.each do |rule, response|
       break if rule[0] < score_check
-      if rule_matches_a_query?(rule, queries)
+      if rule_returns_true?(rule, queries)
         responses << response
         score_check = rule[0]
       end
@@ -30,7 +30,7 @@ class TrashTalkProcessor
     return second_pass.join(" ")
   end
 
-  def rule_matches_a_query?(rule, queries)
+  def rule_returns_true?(rule, queries)
     eval_key = format_key(rule)
     return eval eval_key
   end
