@@ -6,8 +6,8 @@ describe 'Player Creator class' do
 
 
 
-  it 'should create a default player with no relevant args' do
-    command_line_args = "irrelevant-args"
+  it 'should create a default player relevant args' do
+    command_line_args = "default-player"
     player_creator = PlayerCreator.new(command_line_args)
 
     player = player_creator.create
@@ -21,7 +21,7 @@ describe 'Player Creator class' do
   end
 
   it 'should create an inputted player with relevant args' do
-    command_line_args = ["player"]
+    command_line_args = [""]
     player_creator = PlayerCreator.new(command_line_args)
     expect(STDOUT).to receive(:puts).with('Enter name:')
     expect(STDOUT).to receive(:puts).with('Enter lastname:')

@@ -1,7 +1,7 @@
 class Utils
 
   def validate_args(command_line_args)
-    accepted_command_line_args = ['player']
+    accepted_command_line_args = ['default-player', 'no-player']
 
     #Validate command-line args
     command_line_args.each do |arg|
