@@ -1,4 +1,4 @@
-class Query
+class Queries
 	attr_reader :fighter, :opponent, :history
 
 	def initialize(fighter, opponent, fight_record)

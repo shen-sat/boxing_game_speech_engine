@@ -1,7 +1,6 @@
 class Reader
 
 	def see_roster(roster)
-		puts "\n"
 		rows = []
 		sorted_roster = roster.sort_by {|fighter| fighter.rank} 
 		sorted_roster.each do |fighter|
@@ -20,12 +19,14 @@ class Reader
 	end
 
 	def see_fight_record(fight_record)
-		puts "\n"
+
 		fight_record.each do |key, value|
 			rows = []
 			headings = []
-			puts "\n"
 			last_fight_winner = fight_record[key][:last_fight_winner]
+			if last_fight_winner != nil
+				last_fight_winner = fight_record[key][:last_fight_winner].name
+			end
 			rows << [	"#{key.to_a[0].name} '#{key.to_a[0].nickname}' #{key.to_a[0].lastname}" +
 						"\n#{key.to_a[1].name} '#{key.to_a[1].nickname}' #{key.to_a[1].lastname}",  
 						"#{last_fight_winner}"

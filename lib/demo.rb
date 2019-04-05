@@ -10,7 +10,7 @@ require_relative '../lib/enemy'
 require_relative '../lib/fight_record_builder'
 require_relative '../lib/trash_talk_processor'
 require_relative '../lib/press_conference'
-require_relative '../lib/query'
+require_relative '../lib/queries'
 require_relative '../lib/fight_selector'
 require_relative '../lib/fight_record_editor'
 require_relative '../lib/reader'
@@ -39,12 +39,17 @@ puts "*** #{player.name} '#{player.nickname}' #{player.lastname}, age: #{player.
 
 roster = []
 if command_line_args.include?("no-player")
-  roster = [joe, cobra]
+  roster = [cobra, joe]
 else
-  roster = [player, joe, cobra]
+  roster = [player, cobra, joe]
 end
 
-
+system "clear"
+reader = Reader.new
+puts "Say hello to the most fantastic collection of oddballs, rogues and mean-mugs you'll ever meet: your roster :)"
+reader.see_roster(roster)
+puts "Press enter to continue"
+STDIN.gets
 
 pair_matrix = PairMatrixBuilder.new(roster).build
 fight_record = FightRecordBuilder.new(pair_matrix).build
@@ -69,8 +74,9 @@ loop do
     system "clear"
     press_conference = PressConference.new(selected_fighters, fight_record, trash_talk_processor)
     press_conference.start
-    reader = Reader.new
+    puts "See roster table:"
     reader.see_roster(selected_fighters)
+    puts "See fight record:"
     reader.see_fight_record(fight_record)
     puts "Press enter to continue"
     STDIN.gets
