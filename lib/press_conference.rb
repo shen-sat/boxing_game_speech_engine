@@ -23,6 +23,7 @@ class PressConference
       query = fighter.build_query(opponent, fight_record)
       fighter.trash_talk(query, trash_talk_processor)
     end
+    press_enter_to_continue
     insert_dotted_line
   end
 
@@ -33,6 +34,11 @@ class PressConference
 
   def insert_dotted_line
     puts "----------------------------------"
+  end
+
+  def press_enter_to_continue
+    puts "Press enter to continue..."
+    STDIN.gets.chomp
   end
 
 end

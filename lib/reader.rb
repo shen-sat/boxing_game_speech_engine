@@ -9,10 +9,11 @@ class Reader
 							fighter.name, 
 							fighter.lastname,
 							fighter.nickname,
-							fighter.age
+							fighter.age,
+							fighter.no_of_fights
 						]
 		end
-		headings = ["Rank", "Name", "Lastname", "Nickname", "Age"]
+		headings = ["Rank", "Name", "Lastname", "Nickname", "Age", "No of Fights"]
 		table = Terminal::Table.new :headings => headings, :rows => rows
 		puts table
 		puts "\n"
@@ -25,26 +26,12 @@ class Reader
 			headings = []
 			puts "\n"
 			last_fight_winner = fight_record[key][:last_fight_winner]
-			last_fight_win_method = fight_record[key][:last_fight_win_method]
-			last_fight_no_of_rounds = fight_record[key][:last_fight_no_of_rounds]
-			first_fighter = key.to_a[0]
-			second_fighter = key.to_a[1]
-			first_fighter_no_of_wins = fight_record[key][first_fighter][:no_of_wins]
-			second_fighter_no_of_wins = fight_record[key][second_fighter][:no_of_wins]
 			rows << [	"#{key.to_a[0].name} '#{key.to_a[0].nickname}' #{key.to_a[0].lastname}" +
 						"\n#{key.to_a[1].name} '#{key.to_a[1].nickname}' #{key.to_a[1].lastname}",  
-						"#{last_fight_winner}",
-						"#{last_fight_win_method}",
-						"#{last_fight_no_of_rounds}",
-						"#{first_fighter_no_of_wins}",
-						"#{second_fighter_no_of_wins}"
+						"#{last_fight_winner}"
 					]
 			headings << [	"Pair",
-							"Last Fight Winner",
-							"Last Fight Win Method",
-							"Last Fight No Of Rounds",
-							"#{key.to_a[0].name} wins",
-							"#{key.to_a[1].name} wins"
+							"Last Fight Winner"
 						]
 		table = Terminal::Table.new :headings => headings, :rows => rows
 		puts table

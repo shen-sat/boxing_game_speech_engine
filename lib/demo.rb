@@ -13,9 +13,11 @@ require_relative '../lib/press_conference'
 require_relative '../lib/query'
 require_relative '../lib/fight_selector'
 require_relative '../lib/fight_record_editor'
+require_relative '../lib/reader'
 
 require 'roo'
 require 'ap'
+require 'terminal-table'
 
 utils = Utils.new
 
@@ -42,27 +44,36 @@ else
   roster = [player, joe, cobra]
 end
 
+
+
 pair_matrix = PairMatrixBuilder.new(roster).build
 fight_record = FightRecordBuilder.new(pair_matrix).build
 
 loop do
-
+  system "clear"
   puts "Proceed to next press conference or edit fight record?"
   puts "[0] Press conference"
   puts "[1] Fight record"
   if STDIN.gets.chomp.to_i == 1
+    system "clear"
     puts "Entering fight record editor"
     fight_record_editor = FightRecordEditor.new(fight_record)
     fight_record_editor.show_menu_pairs
     choice = STDIN.gets.chomp.to_i
     fight_record_editor.edit_last_fight_winner(choice)
   else
+    system "clear"
     puts "Entering press conference"
     fight_selector = FightSelector.new(roster)
     selected_fighters = fight_selector.select
-
+    system "clear"
     press_conference = PressConference.new(selected_fighters, fight_record, trash_talk_processor)
     press_conference.start
+    reader = Reader.new
+    reader.see_roster(selected_fighters)
+    reader.see_fight_record(fight_record)
+    puts "Press enter to continue"
+    STDIN.gets
   end
 end
 

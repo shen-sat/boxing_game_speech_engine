@@ -1,4 +1,5 @@
 require_relative 'fighter'
+require 'ap'
 
 class Enemy < Fighter
 
@@ -8,7 +9,7 @@ class Enemy < Fighter
   end
 
   def trash_talk(query, trash_talk_processor)
-    trash_talk_processor.process(query).split('\n').each { |line| puts line }
+    trash_talk_processor.process(query).split('\n').each {|line| ap line }
   end
 
 end
